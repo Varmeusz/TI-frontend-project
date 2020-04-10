@@ -9,7 +9,10 @@
         <link type="text/css" rel="stylesheet" href="index.css"/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 				<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+        <script>
+          let tab2=[];
+        </script>
         <title>Front end /s</title>
 
     </head>
@@ -29,15 +32,49 @@
                         
         </div> 
         <div class="Vignette mainPosition">
+          <div class="firstMain">
+            <label for="p">Szansa</label><input id="p" name="p" type="number" value="0.02"><br>
+            <label for="reset">Reset</label><input id="reset" name="reset" type="number" value="0.5"><br>
+            <button id="submit" onclick="tab2 = simulate();
+            draw();
+            ">Generuj</button>
+            
+          </div>
+          <div class="canvas-container"><canvas id="myChart"></canvas></div>
+               
+
+               
                
                     
         </div>
-
+<div class="footer vignette">
+			<div class="footer-content">
+				<h3>Kontakt</h3>
+				<p><strong>Adres email</strong>: <a href="mailto:a.waclawczyk+chartjs@student.edu.po.pl">A. Wacławczyk</a> </p>
+                <p><strong>Github</strong>: <a href="https://github.com/awaclawczykatpo">awaclawczykatpo</a></p>
+                <p><strong>Nr telefonu</strong>: <a href="tel:+48123456789">+48 123 456 789</a></p>
+			</div>
+			<div class="footer-content"><h3>Linki</h3>
+			<ul>
+				<li><a href="">JQuery</a></li>
+				<li><a href="">FlipCards</a></li>
+				<li><a href="">3</a></li>
+				<li><a href="">4</a></li>
+			</ul>
+			</div>
+			<div class="logo-container"><a id="chartjslogo" href="https://www.chartjs.org/">
+					<img src="chartjs-logo.svg">
+					<figcaption style="text-align: center;">ChartJS</figcaption>
+				</a></div>
+				
+			
+			<div class="copyright-me">© A. Wacławczyk</div>
+    </div>
     </body>
    
        
         <script src="skrypt1.js"></script>
-        <script src="skrypt2.js"></script>
+        <script src="genData.js"></script>
         <script src="skrypt3.js"></script>
         
 </html>

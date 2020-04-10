@@ -78,13 +78,13 @@ body {
 }
 
 #flexCont{
-    height:100%;
+    height:100vh;
 }
 #end{
     background-color: black;
     height: 100%;
 }
-.pseudoJumbotron{
+.firstMain{
   padding:10vh;
 }
 .footer {
@@ -92,12 +92,19 @@ body {
   box-shadow: 0 0 50px rgba(0,0,0,0.5) inset;
   overflow:hidden;
   display:flex;
+  flex-wrap:wrap;
   justify-content: space-around;
 }
 .footer-content{
   
 }
 .logo-container{
+  
+}
+.loco-container a img {
+  width:100%;
+  height:auto;
+  transform: scale(0.5);
 }
 .copyright-me{
   position: absolute;

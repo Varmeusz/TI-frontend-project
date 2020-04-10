@@ -1,0 +1,164 @@
+<!DOCTYPE html5>
+<html lang="pl">
+    <head>
+        <meta name="description" content="Prosta strona internetowa używająca Chart.js do przedstawienia wygenerowanych danych w JS na podstawie paru zasad">
+        <meta name="keywords" content="dane, prezentacja, analiza">
+        <meta name="author" content="Adam">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link type="text/css" rel="stylesheet" href="index.css"/>
+        <link type="text/css" rel="stylesheet" href="data.css"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <title>Front end /s</title>
+
+    </head>
+    <body>
+        
+        <div id="top-pers" >
+            <nav class="mynav" id="mynavb">
+                <a href="index.html">Strona główna</a>
+                <a href="data.html" class="active">Generowanie danych</a>
+                <a href="charts.html">Charts</a>
+                <a href="chartsjs.html">ChartJS</a>
+                <a href="kontakt.html">Kontakt</a>
+                <a href="javascript:void(0);" class="icon">
+                <i class="fa fa-bars"></i>
+                </a>
+            </nav>           
+        </div> 
+        <div  class="Vignette mainPosition">
+                 <div class="pseudoJumbotron">
+                  <h1>O generowaniu danych...</h1>
+									<ol>
+										<li><a href="#first-content">Skąd pomysł</a></li>
+										<li><a href="#second-content">Co dokładnie dane przedstawiają</a></li>
+										<li><a href="#third-content">Jak dane są generowane</a></li>
+									</ol>
+                </div>
+								<div id="first-content" class="ol-contents">
+									<h2>Skąd pomysł</h2>
+									<p>&emsp;Rynek mobilny na całym świecie opanowany jest przez gry <em>automaty</em> - gry stworzone na wzór maszyn opierających się na wrzucaniu monet.
+									Wspólną cechą tych gier jest mechanika ściśle związana z prawdopodobieństwem...
+									</p>
+									<p>&emsp;Z pewnym prawdopodobieństwem <var>x</var> gracz otrzymuje nagrody(najczęściej są to karty, postaci). Zaimplementowany jest szereg mechanik
+									 mających na celu przywiązanie gracza do otrzymanych nagród celem dalszego ich rozwijania. Ograniczeni przez walutę w grze gracze chcąc szybciej się rozwijać są zmuszeni wydać prawdziwe pieniądze</p> 
+									
+									
+									<table align="center">
+										<caption>Najbardziej dochodowe gry <em>automaty</em>.<br> Dane z SensorTower, maj 2019</caption>
+										<tr>
+											<th>Nazwa</th>
+											<th>Android</th>
+											<th>iOS</th>
+											<th>Total</th>
+										</tr>
+										<tr>
+											<td>Fgo</td>
+											<td>$22M</td>
+											<td>$18M</td>
+											<td>$40M</td>
+										</tr>
+										<tr>
+											<td>Empires & Puzzles: RPG Quest</td>
+											<td>$13M</td>
+											<td>$7M</td>
+											<td>$20M</td>
+										</tr>
+										<tr>
+											<td>Granblue Fantasy</td>
+											<td>$7M</td>
+											<td>$10M</td>
+											<td>$17M</td>
+										</tr>
+										<tr>
+											<td>Summoner's War</td>
+											<td>$8M</td>
+											<td>$8M</td>
+											<td>$16M</td>
+										</tr>
+										
+									</table>
+								</div>
+                <div id="second-content" class="ol-contents">
+									<h2>Co dokładnie dane przedstawiają</h2>
+									<p>&emsp;Każda nagroda związana jest z systemem losowania. Każde losowanie ma <var>x</var>-procentową szansę na wylosowanie rzadkiej nagrody.
+									Dane prezentowane w zakładce <a href="charts.html">Charts</a> są wynikiem przeprowadzenia 10000 symulacji, każda symulacja zwraca ilość losowań potrzebnych do wylosowania nagrody <em>rzadkiej</em>.
+									Każdy wykres to przedstawienie ilości losowań i centyli(ile losowań musi gracz wykonać aby mieć np. 50% szansy na wylosowanie).
+									</p>
+									
+									
+									
+								</div>
+                <div id="third-content" class="ol-contents">
+									<h2>Jak dane są generowane</h2>
+									<p>&emsp;Opierając się na systemie losowań z nowo wydanej gry <em>Arknights</em> przygotowano skrypt losujący.</p>
+                                    <h3>Opis zmiennych</h3>
+                                    <p>
+                                        <var>p</var> - szansa na wylosowanie nagrody rzadkiej<br>
+                                        <var>reset</var> - szansa na wylosowania pożądanej nagrody rzadkiej(w tym przypadku jedna z dwóch)<br>
+                                        <var>pulls</var> - ilość losowań<br>
+                                        <var>pulls_since_6s</var> - ilość losowań od ostatniej nagrody rzadkiej niepożądanej<br>
+                                        <var>pity_p</var> - dosłownie "wskaźnik litości", po 50. losowaniach szanse na wylosowanie nagrody rzadkiej wzrastają o 0.02
+                                        
+                                    </p>
+                                    <h3>Losowanie</h3>
+                                    <p>Każde losowanie to porównywanie wartości losowych z pewnymi stałymi</p>
+									<pre><code>function pull(p=0.02,reset=0.5){
+    let pulls = 1;
+    let pulls_since_6s = 0;
+    while(true){
+        let pity_p = Math.max(0,pulls_since_6s-50)*0.02+p;
+        if(Math.random()< pity_p){
+            if(Math.random()< reset){
+                //niewylosowano pożądanej nagrody rzadkiej
+                pulls_since_6s =0;
+                pulls += 1;
+                continue;
+                }else{
+                    //wylosowano pożądaną nagrodę rzadką
+                    return pulls;
+            }
+        }
+        pulls_since_6s += 1;
+        pulls += 1;
+    }
+}</code></pre>
+								</div>
+                    <br>
+        </div>
+       
+        
+        
+
+    
+    <div class="footer vignette">
+			<div class="footer-content">
+				<h3>Kontakt</h3>
+				<p><strong>Adres email</strong>: <a href="mailto:a.waclawczyk+chartjs@student.edu.po.pl">A. Wacławczyk</a> </p>
+                <p><strong>Github</strong>: <a href="https://github.com/awaclawczykatpo">awaclawczykatpo</a></p>
+                <p><strong>Nr telefonu</strong>: <a href="tel:+48123456789">+48 123 456 789</a></p>
+			</div>
+			<div class="footer-content"><h3>Linki</h3>
+			<ul>
+				<li><a href="">JQuery</a></li>
+				<li><a href="">FlipCards</a></li>
+				<li><a href="">3</a></li>
+				<li><a href="">4</a></li>
+			</ul>
+			</div>
+			<div class="logo-container" style="display:inline-block; float:right;"><a id="chartjslogo" href="https://www.chartjs.org/">
+					<img src="chartjs-logo.svg">
+					<figcaption style="text-align: center;">ChartJS</figcaption>
+				</a></div>
+				
+			
+			<div class="copyright-me">© A. Wacławczyk</div>
+    </div>
+    
+    <script src="skrypt1.js"></script>
+    <script src="skrypt2.js"></script>
+    <script src="skrypt3.js"></script>
+    </body>
+        
+</html>

@@ -1,8 +1,12 @@
-
+html, body{
+  height:100vh;
+}
 body {
     margin:0;
     background-color: whitesmoke;
     box-sizing:border-box;
+    
+    overflow:auto;
 }
 .mynav {
   background-color: #373737;
@@ -13,6 +17,7 @@ body {
 .mynav a {
   float: left;
   display: block;
+  font-family: Lato;
   color: #f2f2f2;
   text-align: center;
   padding: 14px 16px;
@@ -20,11 +25,11 @@ body {
   font-size: 17px;
 }
 .mynav a:hover{
-  background-color: #b1b1b1;
-  color: black;
+  transition: all 0.2s;
+  color: #6bed48;
 }
 .mynav a.active{
-  background-color: #1bcd5e;
+  background-color: #317249;
   color:white;
 }
 .mynav .icon {
@@ -61,9 +66,11 @@ body {
     left: 0;
     width: 100%;
     min-height: 100%;
+    font-family: sans-serif;
 }
-.vignette {
-    box-shadow: 0 0  200px rgba(0,0,0,0.3) inset;
+.Vignette {
+    box-shadow: 0 0  200px rgba(0,0,0,0.5) inset;
+    display:block;
   }
 #NiceColumnsContainer{
     flex-wrap: wrap;
@@ -85,26 +92,24 @@ body {
     height: 100%;
 }
 .firstMain{
-  padding:10vh;
+  padding:50px;
 }
 .footer {
+  font-family:  sans-serif;
+  background-color: #444343;
   position: relative;
-  box-shadow: 0 0 50px rgba(0,0,0,0.5) inset;
-  overflow:hidden;
   display:flex;
   flex-wrap:wrap;
   justify-content: space-around;
+  color: #fafafa;
 }
-.footer-content{
+.footer a{
   
+  color: #6bed48;
 }
-.logo-container{
-  
-}
-.loco-container a img {
-  width:100%;
-  height:auto;
-  transform: scale(0.5);
+.logo-container  {
+  background-size: 20px 30px;
+  transform: scale(0.75);
 }
 .copyright-me{
   position: absolute;

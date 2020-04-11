@@ -21,22 +21,34 @@ function pull(p=0.02,reset=0.5){
 	}
 }
 function simulate(){
+	
 	let tab = [];
-
-
 let simulations = 10000;
 while(simulations>0){
-	let p2 = $('#p').val()
+	let p2 = $('#p').val();
 	let reset2 = $('#reset').val();
 	tab.push(pull(parseFloat(p2),parseFloat(reset2)));
 	simulations--;
 }
 return tab;
 }
+let myChart=null;
+let myChartSmall=null;
 function draw(){
-	let canvas = document.getElementById('myChart');
+	if(myChart!= null){
+		myChart.destroy();
+		$('#bar-chart').empty();
+		$('#bar-chart').append('<canvas id="myChart"></canvas>');
+	}
+	if(myChartSmall!= null){
+		myChartSmall.destroy();
+		$('#bar-chart-small').empty();
+		$('#bar-chart-small').append('<canvas id="myChartSmall"></canvas>');
+	}
+let canvas = document.getElementById('myChart');
 let ctx = canvas.getContext('2d');
-ctx.clearRect(0, 0, canvas.width, canvas.height);
+let canvasSmall = $('#myChartSmall')[0];
+let ctxSmall = canvasSmall.getContext('2d');
 
 tab2.sort(function(a, b){return a - b;});
 let probtab=[];
@@ -50,10 +62,9 @@ for(let i = 10; i <= 1000; i = i+10){
 let labls=[];
 for(let i =0; i<=tab2[9999];i=i+50){
 	labls.push(i);
-	console.log(i);
 }
 labls.push();
-var myChart = new Chart(ctx, {
+myChart = new Chart(ctx, {
     type: 'bar',
 	color:'red',
     data: {
@@ -66,7 +77,8 @@ var myChart = new Chart(ctx, {
         }]
     },
 	options: {
-	
+		responsive:true,
+	maintainAspectRatio:false,
     scales: {
       xAxes: [{
         display: true,
@@ -92,7 +104,7 @@ var myChart = new Chart(ctx, {
 			beginAtZero: true,
 			min:0,
 			max:probtab[9999],
-			stepsize: 1.1
+			stepsize: 1
 		}
 		
 	  }]
@@ -101,5 +113,40 @@ var myChart = new Chart(ctx, {
   }
     
 });
-myChart.resize();
+myChartSmall = new Chart(ctxSmall, {
+    type: 'bar',
+		color:'red',
+    data: {
+		labels: ["25%", "50%", "75%", "100%"],
+        datasets: [{
+				backgroundColor:'rgba(172, 154, 36, 0.64)',
+            label: 'Ilość losowań',
+            data: [probtab[24],probtab[49],probtab[74],probtab[99]],
+            borderWidth: 0
+        }]
+    },
+	options: {
+		responsive:true,
+	maintainAspectRatio:false,
+    scales: {
+      xAxes: [{
+        display: true,
+		categoryPercentage:1.0,
+        barPercentage: 1.0,
+		scaleLabel: {
+        display: true,
+        labelString: 'Prawdopodobieństwo'
+      }
+  }],
+      yAxes: [{display:true,
+			  scaleLabel: {
+        display: true,
+        labelString: 'Ilość losowań'
+      }
+		
+	  }]
+    
+}
+}
+});
 }

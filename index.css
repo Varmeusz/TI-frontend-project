@@ -26,7 +26,7 @@ body {
 }
 .mynav a:hover{
   transition: all 0.2s;
-  color: #6bed48;
+  color: #317249;
 }
 .mynav a.active{
   background-color: #317249;
@@ -121,4 +121,7 @@ body {
   .copyright-me{
     text-align: left;
   }
+}
+#myChart{
+  
 }

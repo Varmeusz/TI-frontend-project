@@ -111,8 +111,8 @@
     let pulls_since_6s = 0;
     while(true){
         let pity_p = Math.max(0,pulls_since_6s-50)*0.02+p;
-        if(Math.random()< pity_p){
-            if(Math.random()< reset){
+        if(Math.random()&lt;pity_p){
+            if(Math.random()&lt;reset){
                 //niewylosowano pożądanej nagrody rzadkiej
                 pulls_since_6s =0;
                 pulls += 1;

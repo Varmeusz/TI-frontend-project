@@ -28,11 +28,15 @@ window.chartColors = {
 				}],
 				labels: [
 					'Pacman',
-					'Not Pacman'
 					
 				]
 			},
 			options: {
+				title: {
+					display: true,
+					text: 'Wykres stworzony przy pomocy chart.js przedstawiający Pacmana',
+					position: 'bottom'
+				},
 				rotation: (Math.PI/4),
 				animation:false,
 				responsive: true,
@@ -49,7 +53,6 @@ let flag=true;
 function eat(){
 	if(flag){
 		window.myPie.options.rotation=(Math.PI/4)-0.75;
-		window.myPie.data.labels.pop();
     window.myPie.data.datasets[0].data.pop();
 		window.myPie.data.datasets[0].data[0]=1.0;
     window.myPie.update();
@@ -57,7 +60,6 @@ function eat(){
 		
 	}else{window.myPie.options.rotation=Math.PI/4;
 		
-		window.myPie.data.labels.push("not pacman");
 		window.myPie.data.datasets[0].data[0]=0.75;
     window.myPie.data.datasets[0].data.push(0.25);
     window.myPie.update();

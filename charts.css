@@ -3,6 +3,8 @@
 	height:50vh;
 	padding:0;
 	overflow: auto;
+	padding: 0px 100px 0px;
+	z-index: -1;
 }
 .chart-main{
 	height:120vh;
@@ -18,5 +20,5 @@
 }
 label {
 	display:  inline-block;
-	width: 100px;
+	width: 150px;
 }

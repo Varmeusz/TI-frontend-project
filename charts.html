@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="pl">
     <head>
         <meta name="description" content="Prosta strona internetowa używająca Chart.js do przedstawienia wygenerowanych danych w JS na podstawie paru zasad">
         <meta name="keywords" content="dane, prezentacja, analiza">
@@ -23,7 +23,7 @@
             <nav class="mynav" id="mynavb">
                 <a href="index.html" >Strona główna</a>
                 <a href="data.html">Generowanie danych</a>
-                <a href="charts.html"class="active">Charts</a>
+                <a href="charts.html" class="active">Charts</a>
                 <a href="chartsjs.html">ChartJS</a>
                 <a href="kontakt.html">Kontakt</a>
                  <a href="javascript:void(0);" class="icon">
@@ -36,7 +36,7 @@
         <div class="Vignette mainPosition">
           <div class="chart-main">
             <div class="form-input"><label for="p">Szansa:&emsp;</label><input id="p" name="p" type="number" value="0.02" step="0.01"><br>
-            <label for="reset">Reset:&emsp;</label><input id="reset" name="reset" type="number" value="0.5" min="0.01"max="0.99" step="0.01"><br>
+            <label for="reset">Reset:&emsp;</label><input id="reset" name="reset" type="number" value="0.5" min="0.01" max="0.99" step="0.01"><br>
             <button id="submit" onclick="
             if(validateNumbers()){
                   tab2 = simulate();
@@ -70,11 +70,12 @@
 			
 			<div class="copyright-me">© A. Wacławczyk</div>
     </div>
-    </body>
-   
-       
         <script src="skrypt1.js"></script>
         <script src="genData.js"></script>
         <script src="validate.js"></script>
+    </body>
+   
+       
+        
         
 </html>

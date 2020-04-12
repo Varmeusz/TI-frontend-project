@@ -2,6 +2,9 @@
 	padding-left: 5vw;
 	width:50%;
 }
+pre {
+	overflow: auto;
+}
 @media screen and (max-width: 600px){
   .ol-contents{
 		padding: 0;

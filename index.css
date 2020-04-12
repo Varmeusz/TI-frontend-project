@@ -70,7 +70,7 @@ body {
     font-family: sans-serif;
 }
 .Vignette {
-    box-shadow: 0 0  200px rgba(0,0,0,0.5) inset;
+    box-shadow: 0 0  100px rgba(0,0,0,0.5) inset;
     display:block;
   }
 #NiceColumnsContainer{

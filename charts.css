@@ -16,6 +16,9 @@
 }
 .form-input{
 	padding-top: 50px;
+	display: flex;
+	align-items: center;
+	flex-flow: column;
 }
 label {
 	display:  inline-block;

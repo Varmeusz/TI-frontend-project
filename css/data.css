@@ -1,0 +1,21 @@
+.ol-contents{
+	padding-left: 5vw;
+	width:50%;
+}
+pre {
+	overflow: auto;
+}
+@media screen and (max-width: 600px){
+  .ol-contents{
+		padding: 0;
+		width:100%;
+	}
+	
+}
+table{
+	margin: auto;
+}
+table,th,td {
+	border: 1px solid black;
+	border-collapse: collapse;
+}

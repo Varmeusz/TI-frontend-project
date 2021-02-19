@@ -1,82 +1,98 @@
 <!DOCTYPE html>
 <html lang="pl">
+  <head>
+    <meta
+      name="description"
+      content="Prosta strona internetowa używająca Chart.js do przedstawienia wygenerowanych danych w JS na podstawie paru zasad"
+    />
+    <meta name="keywords" content="dane prezentacja analiza" />
+    <meta name="author" content="Adam" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link type="text/css" rel="stylesheet" href="css/index.css" />
+    <link type="text/css" rel="stylesheet" href="css/charts.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    <title>TI-frontend</title>
+  </head>
 
-<head>
-  <meta name="description"
-    content="Prosta strona internetowa używająca Chart.js do przedstawienia wygenerowanych danych w JS na podstawie paru zasad">
-  <meta name="keywords" content="dane prezentacja analiza">
-  <meta name="author" content="Adam">
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link type="text/css" rel="stylesheet" href="css/index.css" />
-  <link type="text/css" rel="stylesheet" href="css/charts.css" />
-  <link href='https://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
-  <title>TI-frontend</title>
-
-</head>
-
-<body>
-  <div id="top-pers">
-    <nav class="mynav" id="mynavb">
-      <a href="index.html">Strona główna</a>
-      <a href="data.html">Generowanie danych</a>
-      <a href="charts.html">Charts</a>
-      <a href="chartsjs.html">ChartJS</a>
-      <a href="kontakt.html" class="active">Kontakt</a>
-      <a href="javascript:void(0);" class="icon">
-        <i class="fa fa-bars"></i>
-      </a>
-    </nav>
-  </div>
-  <div class="Vignette mainPosition">
-    <div class="firstMain">
-      <h1>Formularz kontaktowy</h1>
-      <p>Jeśli masz jakieś pytania, prześlij formularz</p>
-
+  <body>
+    <div id="top-pers">
+      <nav class="mynav" id="mynavb">
+        <a href="index.html">Strona główna</a>
+        <a href="data.html">Generowanie danych</a>
+        <a href="charts.html">Charts</a>
+        <a href="chartsjs.html">ChartJS</a>
+        <a href="kontakt.html" class="active">Kontakt</a>
+        <a href="javascript:void(0);" class="icon">
+          <i class="fa fa-bars"></i>
+        </a>
+      </nav>
     </div>
-    <div>
-      <form id="form" method="get" action="returntoindex.html" onsubmit="return validateForm();"
-        style="padding-left: 50px;">
-        <label for="p1">Imię</label><br>
-        <input type='text' name='p1' id='p1' minlength="2" /><br>
-        <label for="p2">Nazwisko</label><br>
-        <input type='text' name='p2' id='p2' /><br>
-        <p class="form-field">
-          <label for="p3">Zapytanie</label><br>
-          <textarea name='p3' id='p3' cols="30" rows="10"></textarea>
-        </p><br>
-        <label for="p4">Zgadzam się na przetwarzanie...</label><input type="checkbox" name='p4' id='p4' /><br>
-        <label for="p5"></label><input type='submit' name='p5' id='p5' />
-      </form>
+    <div class="Vignette mainPosition">
+      <div class="firstMain">
+        <h1>Formularz kontaktowy</h1>
+        <p>Jeśli masz jakieś pytania, prześlij formularz</p>
+      </div>
+      <div>
+        <form
+          id="form"
+          method="get"
+          action="returntoindex.html"
+          onsubmit="return validateForm();"
+          style="padding-left: 50px"
+        >
+          <label for="p1">Imię</label><br />
+          <input type="text" name="p1" id="p1" minlength="2" /><br />
+          <label for="p2">Nazwisko</label><br />
+          <input type="text" name="p2" id="p2" /><br />
+          <p class="form-field">
+            <label for="p3">Zapytanie</label><br />
+            <textarea name="p3" id="p3" cols="30" rows="10"></textarea>
+          </p>
+          <br />
+          <label for="p4">Zgadzam się na przetwarzanie...</label
+          ><input type="checkbox" name="p4" id="p4" /><br />
+          <label for="p5"></label><input type="submit" name="p5" id="p5" />
+        </form>
+      </div>
     </div>
 
-  </div>
+    <div class="footer Vignette">
+      <div class="footer-content">
+        <h3>Kontakt</h3>
+        <p>
+          <strong>Adres email</strong>:
+          <a href="mailto:adam@awaclawczyk.xyz">A. Wacławczyk</a>
+        </p>
+        <p>
+          <strong>Github</strong>:
+          <a href="https://github.com/varmeusz">Varmeusz</a>
+        </p>
+      </div>
 
+      <div class="logo-container">
+        <a id="chartjslogo" href="https://www.chartjs.org/">
+          <figure>
+            <img src="images/chartjs-logo.svg" alt="logo-chartjs" />
+            <figcaption style="text-align: center">ChartJS</figcaption>
+          </figure>
+        </a>
+      </div>
 
-
-  <div class="footer Vignette">
-    <div class="footer-content">
-      <h3>Kontakt</h3>
-      <p><strong>Adres email</strong>: <a href="mailto:a.waclawczyk+chartjs@student.edu.po.pl">A. Wacławczyk</a></p>
-      <p><strong>Github</strong>: <a href="https://github.com/awaclawczykatpo">awaclawczykatpo</a></p>
+      <div class="copyright-me">© A. Wacławczyk</div>
     </div>
 
-    <div class="logo-container"><a id="chartjslogo" href="https://www.chartjs.org/">
-        <figure><img src="images/chartjs-logo.svg" alt="logo-chartjs">
-          <figcaption style="text-align: center;">ChartJS</figcaption>
-        </figure>
-      </a></div>
-
-
-    <div class="copyright-me">© A. Wacławczyk</div>
-  </div>
-
-
-  <script src="js/skrypt1.js"></script>
-  <script src="js/validateForm.js"></script>
-</body>
-
+    <script src="js/skrypt1.js"></script>
+    <script src="js/validateForm.js"></script>
+  </body>
 </html>
